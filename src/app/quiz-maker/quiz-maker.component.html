@@ -1,0 +1,40 @@
+<div class="container">
+    <h1>QUIZ MAKER</h1>
+    <div class="selectCategory">
+        <div >
+            <mat-form-field>
+                <mat-label>Select a category</mat-label>
+                <mat-select id="categorySelect" [formControl]="categoryFormControl">
+                    <mat-option *ngFor="let category of triviaCategories" [value]="category.id">
+                        {{category.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Select difficulty</mat-label>
+                <mat-select id="difficultySelect" [formControl]="difficultyFormControl">
+                    <mat-option *ngFor="let item of difficultyLevel" [value]="item.level">
+                        {{item.level | titlecase}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+       
+        <button id="createBtn" class="createbtn"  (click)="onCreateClick()">Create</button>
+    </div>
+    <div>
+        <div *ngFor="let que of quizQuestionList; let i = index">
+            <h3>{{que.question}}</h3>
+            <ul class="ans-list">
+                <li *ngFor="let ans of que.incorrect_answers;let m = index">
+                    <button  (click)="onAnsClick(que.question,ans,i ,m)" type="button" id="{{i}}{{m}}"
+                       
+                  >
+                        {{ans}}
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <button [hidden]="submitAns" (click)="onSubmit()">Submit</button>
+</div>

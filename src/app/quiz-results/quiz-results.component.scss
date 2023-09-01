@@ -1,0 +1,31 @@
+.ans-list{
+    display: flex;
+}
+
+.correctAns{
+background-color: green;
+}
+
+.incorrectAns{
+background-color: red;
+}
+
+.restAns{
+    background-color: white;
+}
+
+.lessAnsCount{
+    background-color: red;
+}
+
+.medAnsCount{
+    background-color: yellow;
+}
+
+.maxAnsCount{
+    background-color: green;
+}
+
+.createNewQuiz{
+    background-color: gray;
+}

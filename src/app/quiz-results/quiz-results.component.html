@@ -1,0 +1,23 @@
+
+<div>
+    <div *ngFor="let que of questionList; let i = index">
+        <h3>{{que.question}}</h3>
+        <ul class="ans-list">
+            <li *ngFor="let ans of que.incorrect_answers;let m = index">
+                <div type="button"
+                    [ngClass]="{'correctAns': ans === que.correct_answer, 'incorrectAns': ans === givenAnswer[i].ans && ans != que.correct_answer, 'restAns':ans != givenAnswer[i].ans && ans != que.correct_answer}">
+                    {{ans}}
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <div [ngClass]="{'lessAnsCount': correctAnsCount < 2, 'medAnsCount': correctAnsCount >= 2 && correctAnsCount < 4, 'maxAnsCount':correctAnsCount >= 4}"><b>
+            You scored {{correctAnsCount}} out of 5
+        </b></div>
+        <div (click) = "createNewQuiz()" class="createNewQuiz">
+            <p>Create a new quiz</p>
+        </div>
+    </div>
+</div>
+
